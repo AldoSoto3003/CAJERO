@@ -9,7 +9,7 @@ int main(){
     int x {};
     std::cin >> x;
 
-    std::cout << "ingrese otro entero: ";
+    std::cout << "ingrese otro entero:  ";
     int y {};
     std::cin >> y;
 

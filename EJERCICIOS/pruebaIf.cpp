@@ -6,7 +6,7 @@ int main(){
     std::cin >> x;
 
     if (x == 0)
-        std::cout << "El valor es cero\n";
+        std::cout << "El valor es cero\n ";
     return 0;
 
     //comentario de prubea
