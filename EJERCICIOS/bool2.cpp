@@ -1,4 +1,4 @@
-ele#include<iostream>
+#include<iostream>
 
 int main(){
 
