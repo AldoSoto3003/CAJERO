@@ -1,7 +1,7 @@
 #include <iostream>
 
 int main(){
-    std::cout << "ingrese un entero ";
+    std::cout << "ingrese un entero  ";
     int x {};
     std::cin >> x;
 
