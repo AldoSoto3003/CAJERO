@@ -2,9 +2,11 @@
 
 int main(){
     
-    char ch{97};
-    int i(ch);
-    std::cout<< i;
+    char ch{ 'a' };
+    
+    std::cout<< ch << '\n';
+    std::cout<< static_cast<int>(ch) << '\n';
+    std::cout <<ch << '\n';
 
     return 0;
 }
