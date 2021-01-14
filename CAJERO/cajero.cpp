@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<conio.h>
+#include<windows.h>
   //empiezo declaración de variables goblaes
     std::string nombres[3] = {"Aldo Soto", "Gabriel Valdez", "Ruben Berrelleza"};
     int noCuenta[3] = {123, 456, 789};
@@ -8,7 +9,7 @@
     double fondoCuenta[3] = {100, 200, 300};
     int key{}, aux {0}, pivote {}, opcion{};
     int menu(),login(),trasnferencia(), retiro(), consultaDeSaldo(),changeNip();
-
+            
   //Termino declaración de 1varaibles globales  
 
 int otraOpcion(){
@@ -26,6 +27,7 @@ int otraOpcion(){
         std::cout << "Vuelva a intentarlo " << '\n'; 
         otraOpcion();
     }
+    return 0;
 }
 
 
@@ -105,6 +107,12 @@ int retiro(){
 
     std::cout <<" ingrese el monto a retirar: " << '\n';
     std::cin >> montoRetirar;
+
+    if (montoRetirar<=0 ){
+        std::cout << "No es posiblo retirar dicha cantidad" << '\n';
+        system("cls");
+        otraOpcion();
+    }
 
     if (montoRetirar > fondoCuenta[pivote]){
         std::cout << "Fondos insufucientes" << '\n';
