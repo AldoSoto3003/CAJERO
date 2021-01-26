@@ -336,13 +336,9 @@ void leer(){
           aux++;
       }else if (aux == 5){
           nombres[1] = linea;
-           std::cout << atoi(linea.c_str()) << '\n';
-          system("pause");
           aux++;
       }else if(aux == 6){
           noCuenta[1] = atoi(linea.c_str());
-          std::cout << atoi(linea.c_str()) << '\n';
-          system("pause");
           aux++;
       }else if (aux ==7){
           passCuenta[1] = atoi(linea.c_str());
@@ -366,6 +362,7 @@ void leer(){
 }
 
 void guardar(){
+    std::string valores[12];
     std::cout<<""<<std::endl;
     std::string linea;
     std::ofstream archivo;
@@ -376,18 +373,21 @@ void guardar(){
         system("pause");
     }
 
-    archivo << nombres[0] + '\n';
-    archivo << noCuenta[0] + '\n';
-    archivo << passCuenta[0]+ '\n';
-    archivo << fondoCuenta[0]+ '\n';
-    archivo << nombres[1]+ '\n';
-    archivo << noCuenta[1]+ '\n';
-    archivo << passCuenta[1]+ '\n';
-    archivo << fondoCuenta[1]+ '\n';
-    archivo << nombres[2]+ '\n';
-    archivo << noCuenta[2]+ '\n';
-    archivo << passCuenta[2]+ '\n';
-    archivo << fondoCuenta[2]+ '\n';
+
+
+
+    archivo << nombres[0] << '\n';
+    archivo << noCuenta[0] << '\n';
+    archivo << passCuenta[0] << '\n';
+    archivo << fondoCuenta[0]<< '\n';
+    archivo << nombres[1]<< '\n';
+    archivo << noCuenta[1]<< '\n';
+    archivo << passCuenta[1]<< '\n';
+    archivo << fondoCuenta[1]<< '\n';
+    archivo << nombres[2]<< '\n';
+    archivo << noCuenta[2]<< '\n';
+    archivo << passCuenta[2]<< '\n';
+    archivo << fondoCuenta[2]<< '\n';
 
 
 }
