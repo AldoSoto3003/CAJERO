@@ -14,7 +14,7 @@
     int bandera[3] ={0,0,0};
     double fondoCuenta[3] = {};
     int key{}, aux {0}, pivote {}, opcion{}, intentos{};
-    int menu(),login(),trasnferencia(), retiro(), consultaDeSaldo(),changeNip();
+    int menu(),login(),trasnferencia(), retiro(), consultaDeSaldo(),changeNip(),pagoServicio();
     void leer(),guardar();      
   //Termino declaración de 1varaibles globales  
 
@@ -149,9 +149,16 @@ int consultaDeSaldo(){
 }
 
 int retiro(){
+    system("cls");
     double montoRetirar {};
+    int passconfirmar{};
 
-    std::cout <<" ingrese el monto a retirar: " << '\n';
+    std::cout << "Confirme su password: ";
+    std::cin >> passconfirmar;
+bucle:
+    if (passconfirmar == passCuenta[pivote]){
+        system("cls");
+        std::cout <<" ingrese el monto a retirar: " << '\n';
     std::cin >> montoRetirar;
 
     if (montoRetirar<=0 ){
@@ -169,6 +176,16 @@ int retiro(){
     }
     system("pause");
     otraOpcion();
+    }else{
+        std::cout << "Password doesn't match!!\n";
+        std::cout << "Intentelo de nuevo\n";
+        std::cout << "password: ";
+        std::cin >> passconfirmar;
+        goto bucle;
+    }
+
+
+    
         
     return 0;
 }
@@ -233,15 +250,16 @@ int menu(){
     std::cout<<"2.- retiro "<< '\n';
     std::cout<<"3.- deposito "<< '\n';
     std::cout<<"4.- transferencia "<< '\n';
-    std::cout<<"5.- cambio de nip "<< '\n';
-    std::cout<<"6.- cerrar sesion"<< '\n';
-    std::cout<<"7.- SALIR" << '\n';
+    std::cout<<"5.- pago de servicios\n";
+    std::cout<<"6.- cambio de nip "<< '\n';
+    std::cout<<"7.- cerrar sesion"<< '\n';
+    std::cout<<"8.- SALIR" << '\n';
 
     std::cin >> key;
     
     //en el siguiente ciclo, valido que entre una opcion permitida
     //de lo contrario, que vuelva a ingresar una opción
-    while((key <= 0) or (key >=8)){
+    while((key <= 0) or (key >=9)){
         std::cout<<"Debe eligir una de las opciones validas"<<'\n';
         std::cin >> key;
     }
@@ -282,20 +300,28 @@ int menu(){
                 login();
         break;
         case 5:
-            changeNip();
-
-            if (opcion == 1 )
+            pagoServicio();
+             if (opcion == 1 )
                 menu();
             else
                 login();
         break;
 
         case 6:
-            login();
+            changeNip();
+
+            if (opcion == 1 )
+                menu();
+            else
+                login();
 
         break;
         
         case 7:
+            login();
+        break;
+        
+        case 8:
             guardar();
             exit(1);
         break;
@@ -362,6 +388,8 @@ void leer(){
 }
 
 void guardar(){
+
+
     std::string valores[12];
     std::cout<<""<<std::endl;
     std::string linea;
@@ -389,5 +417,91 @@ void guardar(){
     archivo << passCuenta[2]<< '\n';
     archivo << fondoCuenta[2]<< '\n';
 
+}
 
+int pagoServicio(){
+
+    system("cls");
+
+    int opcion{},x{};
+
+    std::cout << "¿Que servicio desea pagar?: \n";
+    std::cout << "1.- AGUA\n";
+    std::cout << "2.- LUZ\n";
+    std::cout << "3.- INTERNET\n";
+
+    std::cin >> opcion;
+bucle3:
+    if (opcion>=1 && opcion <=3){
+        switch (opcion){
+        case 1:
+            std::cout << "Ingrese monto a pagar: ";
+            std::cin >> x;
+            if (x<=0){
+                std::cout << "El monto debe ser mayor a 0\n";
+                std::cout << "Vuelva a intentarlo\n";
+                system("pause");
+                system("cls");
+                goto bucle3;
+            }else if(x > fondoCuenta[pivote]){
+                std::cout << "Fondos Insuficientes!!\n";
+                system("pause");
+                otraOpcion();
+            }else{
+                fondoCuenta[pivote] -= x;
+            }
+            
+        break;
+
+        case 2:
+             std::cout << "Ingrese monto a pagar: ";
+            std::cin >> x;
+            if (x<=0){
+                std::cout << "El monto debe ser mayor a 0\n";
+                std::cout << "Vuelva a intentarlo\n";
+                system("pause");
+                system("cls");
+                goto bucle3;
+            }else if(x > fondoCuenta[pivote]){
+                std::cout << "Fondos Insuficientes!!\n";
+                system("pause");
+                otraOpcion();
+            }else{
+                fondoCuenta[pivote] -= x;
+            }
+        break;
+
+        case 3:
+            std::cout << "Ingrese monto a pagar: ";
+            std::cin >> x;
+            if (x<=0){
+                std::cout << "El monto debe ser mayor a 0\n";
+                std::cout << "Vuelva a intentarlo\n";
+                system("pause");
+                system("cls");
+                goto bucle3;
+            }else if(x > fondoCuenta[pivote]){
+                std::cout << "Fondos Insuficientes!!\n";
+                system("pause");
+                otraOpcion();
+            }else{
+                fondoCuenta[pivote] -= x;
+            }
+
+        break;
+
+        otraOpcion();
+
+     }
+    }else{
+        std::cout << "Debe eligir una de las opciones validas!!\n";
+        std::cout << "intentelo de nuevo!\n";
+        pagoServicio();
+    }
+
+    
+
+
+
+    return 0;
 }

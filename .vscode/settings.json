@@ -39,6 +39,8 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "optional": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "ctime": "cpp",
+        "iomanip": "cpp"
     }
 }
